@@ -11,7 +11,7 @@ Link para o projeto: https://github.com/theMiddleBlue/BaTbot
 ### tg-notifica.sh
 Disparado através das ações das triggers, é quem notifica o usuário.
 Adicione esse script no diretório de alertscripts.
- egrep ^AlertScripts /etc/zabbix/zabbix_server.conf
+> egrep ^AlertScripts /etc/zabbix/zabbix_server.conf
 
 ### tg-grafico.sh
 Esse script é executado pelo batbot, recebendo o ITEMID como parâmetro e retornando um gráfico para o solicitante.
