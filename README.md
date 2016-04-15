@@ -23,7 +23,7 @@ Adicione esse script no diretório de alertscripts.
 - [x] Envio de gráficos
 - [x] Verificação de nomes com o nslookup
 - [x] Execução de ```ping```
-- [] Consulta de eventos recentes
-- [] Consulta de Informações de hosts
-- [] Ideias!
-- [] Colaboradores
+- [ ] Consulta de eventos recentes
+- [ ] Consulta de Informações de hosts
+- [ ] Ideias!
+- [ ] Colaboradores
