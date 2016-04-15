@@ -13,7 +13,7 @@ Onde são armazenadas as variáveis utilizadas pelo [tg-grafico.sh](https://gith
 Observações:
 * Seu preenchimento é obrigatório
 * O usuário deve possuir acesso ao frontend do Zabbix
-* A senha desse usuário não pode conter o caractere ```=``` issue#1
+* A senha desse usuário não pode conter o caractere ```=``` issue #1
 
 #### tg-grafico.sh
 Esse script é executado pelo [batbot](https://github.com/rauhmaru/telegram-scripts/blob/master/batbot.sh), recebendo o *ITEMID* como parâmetro e retornando um gráfico para o solicitante.
@@ -27,7 +27,7 @@ Adicione esse script no diretório de alertscripts.
 
 
 ## Geração de gráficos
-Para a geração de gráficos, não é necessário que os scripts estejam no servidor do Zabbix. Eles podem estar em qualquer host, portanto que consigam acesso a interface web do Zabbix. As consultas são feitas através do método HTTP POST e o usuário que 
+Para a geração de gráficos, não é necessário que os scripts [vars.conf](vars.conf), [tg-grafico.sh](tg-grafico.sh) e [batbot](batbot.sh) estejam no servidor do Zabbix. Eles podem estar em qualquer host, portanto que consigam acesso a interface web do Zabbix. As consultas são feitas através do método HTTP POST.
 
 ## Etapas
 - [x] Envio de notificações
