@@ -1,5 +1,6 @@
 # telegram-scripts
-Scripts para o telegram
+
+##Coleção de scripts para o Telegram, para auxílio de tarefas.
 
 ### batbot.sh
 Responsável por executar os scripts no servidor. Através de um bot, ele fica ouvindo as requisições e quando recebe determinado comando pré-programado, o executa no terminal do host, retornando a saída para o Telegram.
