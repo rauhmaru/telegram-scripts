@@ -5,7 +5,7 @@ VERSION="1.2"
 
 # default token and chatid
 # or run BaTbot with option: -t <token>
-TELEGRAMTOKEN="158977230:AAH_5bEPsC6WO2QCQl9RvMegNRUvm1RiShs";
+TELEGRAMTOKEN="SEU TOKEN AQUI";
 
 # how many seconds between check for new messages
 # or run Batbot with option: -c <seconds>
@@ -26,7 +26,7 @@ botcommands=(
 
 	["/uptime"]="uptime"
 
-	["/grafico (.*)"]="bash tg.sh @R1"
+	["/grafico (.*)"]="bash tg-grafico.sh @R1"
 	
 	["/ping (.*)"]="ping -c 3 @R1"
 
