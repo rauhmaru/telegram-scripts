@@ -6,7 +6,7 @@
 # Carregar as principais variaveis 
 . $(dirname "$0")/vars.conf
 
-#Cria o TM_DIR
+#Cria o TMP_DIR
 [ ! -d "${TMP_DIR}" ] && (mkdir -p ${TMP_DIR} || TMP_DIR="/tmp")
 
 # Telegram
