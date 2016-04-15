@@ -27,7 +27,7 @@ Para a geração de gráficos, não é necessário que os scripts estejam no ser
 ## Etapas
 - [x] Envio de notificações
 - [x] Envio de gráficos
-- [x] Verificação de nomes com o nslookup
+- [x] Verificação de nomes com o ```nslookup```
 - [x] Execução de ```ping```
 - [ ] Consulta de eventos recentes
 - [ ] Consulta de Informações de hosts
