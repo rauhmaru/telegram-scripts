@@ -2,21 +2,27 @@
 
 ##Coleção de scripts para o Telegram, para auxílio de tarefas.
 
-### batbot.sh
+#### batbot.sh
 Responsável por executar os scripts no servidor. Através de um bot, ele ouve as requisições e as executa, conforme o comando pré-programado. O comando é executado no terminal do host e seu STDOUT é direcionado para o Telegram.
 
 Link para o projeto: https://github.com/theMiddleBlue/BaTbot
 
-### vars.conf
-Onde são armazenadas as variáveis utilizadas pelo ```tg-grafico.sh``` e ```tg-notifica.sh```, como por exemplo, URL, login, senha, diretório de armazenamento das imagens e cookie. Seu preenchimento é obrigatório.
+#### vars.conf
+Onde são armazenadas as variáveis utilizadas pelo ```tg-grafico.sh``` e ```tg-notifica.sh```, como por exemplo, URL, login, senha, diretório de armazenamento das imagens e cookie.
+Observações:
+* Seu preenchimento é obrigatório
+* O usuário deve possuir acesso ao frontend do Zabbix
 
-### tg-grafico.sh
+#### tg-grafico.sh
 Esse script é executado pelo batbot, recebendo o ITEMID como parâmetro e retornando um gráfico para o solicitante.
 
-### tg-notifica.sh
+#### tg-notifica.sh
 Disparado através das ações das triggers, é quem notifica o usuário.
 Adicione esse script no diretório de alertscripts.
 ```egrep ^AlertScripts /etc/zabbix/zabbix_server.conf```
+
+## Geração de gráficos
+Para a geração de gráficos, não é necessário que os scripts estejam no servidor do Zabbix. Eles podem estar em qualquer host, portanto que consigam acesso a interface web do Zabbix. As consultas são feitas através do método HTTP POST e o usuário que 
 
 ## Etapas
 - [x] Envio de notificações
