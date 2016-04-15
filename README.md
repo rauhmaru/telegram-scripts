@@ -8,13 +8,13 @@ Responsável por executar os scripts no servidor. Através de um bot, ele ouve a
 Link para o projeto: https://github.com/theMiddleBlue/BaTbot
 
 #### vars.conf
-Onde são armazenadas as variáveis utilizadas pelo ```tg-grafico.sh``` e ```tg-notifica.sh```, como por exemplo, URL, login, senha, diretório de armazenamento das imagens e cookie.
+Onde são armazenadas as variáveis utilizadas pelo [tg-grafico.sh](https://github.com/rauhmaru/telegram-scripts/blob/master/tg-grafico.sh) e [tg-notifica.sh](https://github.com/rauhmaru/telegram-scripts/blob/master/tg-notifica.sh), como por exemplo, URL, login, senha, diretório de armazenamento das imagens e cookie.
 Observações:
 * Seu preenchimento é obrigatório
 * O usuário deve possuir acesso ao frontend do Zabbix
 
 #### tg-grafico.sh
-Esse script é executado pelo batbot, recebendo o ITEMID como parâmetro e retornando um gráfico para o solicitante.
+Esse script é executado pelo [batbot](https://github.com/rauhmaru/telegram-scripts/blob/master/batbot.sh), recebendo o *ITEMID* como parâmetro e retornando um gráfico para o solicitante.
 
 #### tg-notifica.sh
 Disparado através das ações das triggers, é quem notifica o usuário.
