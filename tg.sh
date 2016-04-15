@@ -6,6 +6,9 @@
 # Carregar as principais variaveis 
 . $(dirname "$0")/vars.conf
 
+#Cria o TM_DIR
+[ ! -d "${TMP_DIR}" ] && (mkdir -p ${TMP_DIR} || TMP_DIR="/tmp")
+
 # Telegram
 # Customizacao do gráfico 
 # É possível mudar a cor e tipo do gráfico
@@ -29,9 +32,6 @@ get_image() {
     # Faz download do grafico em png e o salva em um diretorio temporario
     ${CURL} --cookie ${TMP_COOKIE} --globoff "${URL}" -o ${IMG_NAME}
 }
-
-# Envio de mensagens de texto
-#${CURL} ${TELEGRAM_URL}${SENDMESSAGE} -F "chat_id=${CHATID}" -F "text=${MENSAGEM}" 
 
 # Envio de graficos
 login
