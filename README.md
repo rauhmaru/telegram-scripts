@@ -12,6 +12,7 @@ Onde são armazenadas as variáveis utilizadas pelo [tg-grafico.sh](https://gith
 Observações:
 * Seu preenchimento é obrigatório
 * O usuário deve possuir acesso ao frontend do Zabbix
+* A senha desse usuário não pode conter o caractere ```=``` #1
 
 #### tg-grafico.sh
 Esse script é executado pelo [batbot](https://github.com/rauhmaru/telegram-scripts/blob/master/batbot.sh), recebendo o *ITEMID* como parâmetro e retornando um gráfico para o solicitante.
