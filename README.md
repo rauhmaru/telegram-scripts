@@ -23,6 +23,8 @@ Esse script é executado pelo [batbot](https://github.com/rauhmaru/telegram-scri
 Disparado através das ações das triggers, é quem notifica o usuário.
 Adicione esse script no diretório de alertscripts.
 
+[Como configurar alertas no Zabbix](https://www.zabbix.com/documentation/3.0/pt/manual/config/notifications/media/script)
+
 ```egrep ^AlertScripts /etc/zabbix/zabbix_server.conf```
 
 
