@@ -3,7 +3,7 @@
 ##Coleção de scripts para o Telegram, para auxílio de tarefas.
 
 ### batbot.sh
-Responsável por executar os scripts no servidor. Através de um bot, ele fica ouvindo as requisições e quando recebe determinado comando pré-programado, o executa no terminal do host, retornando a saída para o Telegram.
+Responsável por executar os scripts no servidor. Através de um bot, ele ouve as requisições e as executa, conforme o comando pré-programado. O comando é executado no terminal do host e seu STDOUT é direcionado para o Telegram.
 Link para o projeto: https://github.com/theMiddleBlue/BaTbot
 
 ### tg-notifica.sh
