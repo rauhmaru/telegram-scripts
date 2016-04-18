@@ -18,6 +18,8 @@ Observações:
 #### tg-grafico.sh
 Esse script é executado pelo [batbot](https://github.com/rauhmaru/telegram-scripts/blob/master/batbot.sh), recebendo o *ITEMID* como parâmetro e retornando um gráfico para o solicitante.
 
+#### dolar.sh
+Retorna o valor corrente do dólar comercial e sua variação do dia.
 
 #### tg-notifica.sh
 Disparado através das ações das triggers, é quem notifica o usuário.
