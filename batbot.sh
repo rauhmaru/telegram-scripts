@@ -32,7 +32,7 @@ botcommands=(
 
 	["/nslookup (.*)"]="nslookup @R1"
 
-	["/dolar"]="dolar"
+	["/dolar"]="dolar.sh"
 
 	["/disco"]="df -h"
 
