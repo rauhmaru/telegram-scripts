@@ -1,11 +1,13 @@
 #!/bin/bash
 
+# Global variables 
+. $(dirname "$0")/vars.conf
 # BaTbot current version
 VERSION="1.2"
 
 # default token and chatid
 # or run BaTbot with option: -t <token>
-TELEGRAMTOKEN="SEU TOKEN AQUI";
+TELEGRAMTOKEN="${TOKEN}";
 
 # how many seconds between check for new messages
 # or run Batbot with option: -c <seconds>
