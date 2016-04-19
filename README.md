@@ -10,7 +10,7 @@ cd telegram-scripts
 ```
 #### Configure o vars.conf
 
-##### vars.conf
+##### [vars.conf](vars.conf)
 Onde são armazenadas as variáveis utilizadas pelo [tg-grafico.sh](https://github.com/rauhmaru/telegram-scripts/blob/master/tg-grafico.sh) e [tg-notifica.sh](https://github.com/rauhmaru/telegram-scripts/blob/master/tg-notifica.sh), como por exemplo, URL, login, senha, diretório de armazenamento das imagens e cookie.
 Observações:
 * Seu preenchimento é obrigatório
@@ -18,19 +18,19 @@ Observações:
 * A senha desse usuário não pode conter o caractere ```=``` issue #1
 
 
-##### batbot.sh
+##### [batbot.sh](batbot.sh)
 Responsável por executar os scripts no servidor. Através de um bot, ele ouve as requisições e as executa, conforme o comando pré-programado. O comando é executado no terminal do host e seu STDOUT é direcionado para o Telegram.
 
 Link para o projeto: https://github.com/theMiddleBlue/BaTbot
 
 
-##### tg-grafico.sh
+##### [tg-grafico.sh](tg-grafico.sh)
 Esse script é executado pelo [batbot](https://github.com/rauhmaru/telegram-scripts/blob/master/batbot.sh), recebendo o *ITEMID* como parâmetro e retornando um gráfico para o solicitante.
 
-##### dolar.sh
+##### [dolar.sh](dolar.sh)
 Retorna o valor corrente do dólar comercial e sua variação do dia.
 
-##### tg-notifica.sh
+##### [tg-notifica.sh](tg-notifica.sh)
 Disparado através das ações das triggers, é quem notifica o usuário.
 Adicione esse script no diretório de alertscripts.
 
