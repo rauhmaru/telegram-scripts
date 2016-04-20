@@ -9,7 +9,9 @@
 # Comandos
 CURL="curl -s"
 CHATID=$( ${CURL} ${TELEGRAM_URL}${GETUPDATE} | awk -F'"chat":{"id":' END'{print $2}' | sed 's/,.*//' )
-MENSAGEM=$1
+ASSUNTO=$2
+MENSAGEM=$3
 
 # Envio de mensagens de texto
-${CURL} ${TELEGRAM_URL}${SENDMESSAGE} -F "chat_id=${CHATID}" -F "text=${MENSAGEM}" 
+${CURL} ${TELEGRAM_URL}${SENDMESSAGE} -F "chat_id=${CHATID}" -F "text=${ASSUNTO}
+${MENSAGEM}"
