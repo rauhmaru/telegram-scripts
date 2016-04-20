@@ -13,5 +13,5 @@ ASSUNTO=$2
 MENSAGEM=$3
 
 # Envio de mensagens de texto
-${CURL} ${TELEGRAM_URL}${SENDMESSAGE} -F "chat_id=${CHATID}" -F "text=${ASSUNTO}
+${CURL} ${TELEGRAM_URL}${SENDMESSAGE} -F"parse_mode=Markdown" -F "chat_id=${CHATID}" -F "text=${ASSUNTO}
 ${MENSAGEM}"
