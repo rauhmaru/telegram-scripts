@@ -3,7 +3,7 @@
 # Global variables 
 . $(dirname "$0")/vars.conf
 # BaTbot current version
-VERSION="1.2"
+VERSION="1.3"
 
 # default token and chatid
 # or run BaTbot with option: -t <token>
@@ -24,8 +24,7 @@ HELPCOMANDOS="/uptime - Executa o comando uptime no servidor\n
 # please, don't forget to remove all example commands!
 declare -A botcommands
 botcommands=(
-
-
+	
 	["/uptime"]="uptime"
 
 	["/grafico (.*)"]="bash tg-grafico.sh @R1"
@@ -116,7 +115,7 @@ while true; do
 			MSGID=${BASH_REMATCH[1]};
 		fi
 
-		if [[ "$line" =~ \"text\"\:\"(.+)\"\}\} ]]; then
+		if [[ "$line" =~ \"text\"\:\"(.+)\"\,\"ent ]]; then
 			TEXT=${BASH_REMATCH[1]};
 		fi
 
