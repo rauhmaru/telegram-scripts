@@ -1,6 +1,14 @@
 # telegram-scripts
 
-_Coleção de scripts para o Telegram, para auxílio de tarefas_
+_Coleção de scripts para o Telegram, para auxílio de tarefas._
+Faça do seu telegram um verdadeiro terminal, onde você poderá executar comandos diretamente em seu host!
+* Obtenha gráficos do Zabbix
+* Execute `ping` para verificar a disponibilidade de sites e hosts
+* Consulte os nomes através do `nslookup`
+* Veja o valor corrente do dolar
+* Verifique se um serviço está disponível checando o status da porta TCP ou UDP
+* E muito mais vindo aí!
+
 
 ### Instalação
 #### Clone o repositório
@@ -135,12 +143,12 @@ Modo de uso: `checktcp.sh HOST PORTAS`
 Verifica as portas UDP abertas em um host.
 Modo de uso: `checkudp.sh HOST PORTAS`
 
-## Etapas
+### Etapas
 - [x] Envio de notificações
 - [x] Envio de gráficos
-- [x] Verificação de nomes com o ```nslookup```
-- [x] Execução de ```ping```
-- [x] Execução de portscan (checktcp.sh e checkudp.sh)
+- [x] Verificação de nomes com o `nslookup`
+- [x] Execução de `ping`
+- [x] Execução de portscan (`checktcp.sh` e `checkudp.sh`)
 - [ ] Consulta de eventos recentes
 - [ ] Consulta de Informações de hosts
 - [ ] Ideias!
