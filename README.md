@@ -41,13 +41,80 @@ Para identificar qual o seu diretório de Alert Scripts, execute o comando:
 
 
 #### Obtendo gráficos do Zabbix pelo telegram
-Para a geração de gráficos, não é necessário que os scripts [vars.conf](vars.conf), [tg-grafico.sh](tg-grafico.sh) e [batbot](batbot.sh) estejam no servidor do Zabbix. Eles podem estar em qualquer host, portanto que consigam acesso a interface web do Zabbix. As consultas são feitas através do método HTTP POST.
+Para a geração de gráficos, **não** é necessário que os scripts [vars.conf](vars.conf), [tg-grafico.sh](tg-grafico.sh) e [batbot](batbot.sh) estejam no servidor do Zabbix. **Eles podem estar em qualquer host**, portanto que consigam acesso a interface web do Zabbix. As consultas são feitas através do método HTTP POST.
+
+## CONFIGURAÇÃO
+### No Servidor Zabbix
+Verifique qual o seu diretório de AlertScriptsPath:
+
+`grep ^AlertScript /etc/zabbix/zabbix_server.conf`
+
+Por exemplo:
+
+```
+[root@finarfin tmp]# grep ^AlertScript /etc/zabbix/zabbix_server.conf
+AlertScriptsPath=/usr/lib/zabbix/alertscripts
+```
+Acesse o diretório e baixe os scripts:
+```
+cd /usr/lib/zabbix/alertscripts
+git clone https://github.com/rauhmaru/telegram-scripts.git
+mv telegram-scripts/{vars.conf,tg-notifica.sh} .
+chmod +x tg-notifica.sh
+```
+
+### No Zabbix Web
+####Crie o tipo de mídia:
+Logado no Zabbix Server como Super-Administrador, clique em **Administração** > **Tipos de mídias** e depois em **Criar tipo de mídia**.
+Então teremos:
+* **Nome:** telegram
+* **Tipo:** Script
+* **Nome do script:** tg-notifica.sh
+* **Ativo:** sim
+
+####Crie o usuário telegram
+Em **Administração > Usuários**, clique em **Criar usuário**
+Na guia Usuário, defina o apelido **telegram**. Fique a vontade com os outros parâmetros. Coloque-o em um grupo que tenha acesso as notificações que deseja emitir. O Zabbix administrators é uma sugestão.
+Na guia Mídia, clique em adicionar. Defina:
+* **Tipo:** telegram 
+* **Enviar para:** Esse campo não será usado. Preencha como quiser.
+* **Quando ativo:** Período de notificação. O padrão é 24/7.
+* **Ativo:** Sim
+
+####Defina as ações
+* Nome: Telegram
+* Na guia **Configuração > Ações**, clique em **Criar ação**
+* Na guia **Ação**, defina o nome **telegram**.
+* No campo **Assunto padrão**, defina \***[{TRIGGER.STATUS} - {HOST.NAME}]**\*.
+* No campo **Mensagem padrão**, defina, por exemplo:
+```
+{TRIGGER.NAME}
+{ITEM.NAME1}: {ITEM.VALUE1}
+IP: {HOST.IP}
+Verificado às {TIME}, em {EVENT.DATE}
+ITEM ID: {ITEM.ID}
+```
+Recuperação:
+* Marque o campo **Mensagem de recuperação**
+* defina o **Assunto da recuperação** como \***[{TRIGGER.STATUS} - {HOST.NAME}]**\*.
+* A mensagem de recuperação deixe igual (se quiser, claro!) a mensagem padrão:
+```
+{TRIGGER.NAME}
+{ITEM.NAME1}: {ITEM.VALUE1}
+IP: {HOST.IP}
+Verificado às {TIME}, em {EVENT.DATE}
+ITEM ID: {ITEM.ID}
+```
+* Na guia **Ações**, em **Operações da ação**, clique em **Nova**.
+defina, em **Detalhes da operação > Enviar para usuários**, clique em **Adicionar** e selecione **telegram** e adicione a ação.
+
 
 ## Etapas
 - [x] Envio de notificações
 - [x] Envio de gráficos
 - [x] Verificação de nomes com o ```nslookup```
 - [x] Execução de ```ping```
+- [x] Execução de portscan (checktcp.sh e checkudp.sh)
 - [ ] Consulta de eventos recentes
 - [ ] Consulta de Informações de hosts
 - [ ] Ideias!
