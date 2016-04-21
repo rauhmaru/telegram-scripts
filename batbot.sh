@@ -16,12 +16,11 @@ CHECKNEWMSG=5;
 HELPCOMANDOS="/uptime - Executa o comando uptime no servidor\n
 /grafico _ITEMID_ - Retorna o gráfico da última hora do ITEMID\n
 /ping _endereço_ - Executa o ping para o endereço\n
-/nslookup _endereço_- Executa o nslookup para o endereço\n
-/help - Exibe esta tela de ajuda\n
+/nslookup _endereço_ - Executa o nslookup para o endereço\n
 /dolar - Verifica o valor corrente do dolar e sua variacao\n
-/disco - Exibe o particionamento do host
+/checktcp HOST PORTAS - Verifica portas TCP abertas
+/checkudp HOST PORTAS - Verifica portas UDP abertas
 /help - Exibe esta ajuda"
-
 
 # Commands
 # you have to use this exactly syntax: ["/mycommand"]='<system command>'
@@ -38,8 +37,10 @@ botcommands=(
 	["/nslookup (.*)"]="nslookup @R1"
 
 	["/dolar"]="dolar.sh"
-
-	["/disco"]="df -h"
+	
+	["/checktcp (.*)"]="bash checktcp.sh @R1"
+	
+	["/checkudp (.*)"]="bash checkudp.sh @R1"
 
 	["/help"]="echo -e $HELPCOMANDOS"
 
