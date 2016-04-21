@@ -17,7 +17,11 @@ HELPCOMANDOS="/uptime - Executa o comando uptime no servidor\n
 /grafico _ITEMID_ - Retorna o gráfico da última hora do ITEMID\n
 /ping _endereço_ - Executa o ping para o endereço\n
 /nslookup _endereço_- Executa o nslookup para o endereço\n
-/help - Exibe esta tela de ajuda"
+/help - Exibe esta tela de ajuda\n
+/dolar - Verifica o valor corrente do dolar e sua variacao\n
+/disco - Exibe o particionamento do host
+/help - Exibe esta ajuda"
+
 
 # Commands
 # you have to use this exactly syntax: ["/mycommand"]='<system command>'
