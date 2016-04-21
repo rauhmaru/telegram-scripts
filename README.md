@@ -42,7 +42,7 @@ Para a geração de gráficos, **não** é necessário que os scripts [vars.conf
 
 ## CONFIGURAÇÃO
 Esse procedimento é feito em duas etapas:
-### 01 -Configurar o zabbix para que gere as notificações, e envie os ITEM ID
+### 01 - Configurar o zabbix para que gere as notificações e envie os ITEM ID
 
 #### No Servidor Zabbix
 Verifique qual o seu diretório de AlertScriptsPath:
