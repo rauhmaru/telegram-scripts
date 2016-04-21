@@ -85,7 +85,10 @@ Na guia Mídia, clique em adicionar. Defina:
   * Nome: Telegram
   * Na guia **Configuração > Ações**, clique em **Criar ação**
   * Na guia **Ação**, defina o nome **telegram**.
-  * No campo **Assunto padrão**, defina \***[{TRIGGER.STATUS} - {HOST.NAME}]**\*.
+  * No campo **Assunto padrão**, defina:
+
+```*[{TRIGGER.STATUS} - {HOST.NAME}]*```
+
   * No campo **Mensagem padrão**, defina, por exemplo:
 ```
 {TRIGGER.NAME}
@@ -96,7 +99,10 @@ ITEM ID: {ITEM.ID}
 ```
 Recuperação:
 * Marque o campo **Mensagem de recuperação**
-* defina o **Assunto da recuperação** como \***[{TRIGGER.STATUS} - {HOST.NAME}]**\*.
+  * No campo **Assunto de recuperação**, defina:
+  
+```*[{TRIGGER.STATUS} - {HOST.NAME}]*```
+
 * A mensagem de recuperação deixe igual (se quiser, claro!) a mensagem padrão:
 ```
 {TRIGGER.NAME}
