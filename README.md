@@ -11,7 +11,7 @@ cd telegram-scripts
 #### Configure o vars.conf
 
 ##### [vars.conf](vars.conf)
-Onde são armazenadas as variáveis utilizadas pelo [tg-grafico.sh](https://github.com/rauhmaru/telegram-scripts/blob/master/tg-grafico.sh) e [tg-notifica.sh](https://github.com/rauhmaru/telegram-scripts/blob/master/tg-notifica.sh), como por exemplo, URL, login, senha, diretório de armazenamento das imagens e cookie.
+Onde são armazenadas as variáveis utilizadas pelo [tg-grafico.sh](tg-grafico.sh) e [tg-notifica.sh](tg-notifica.sh), como por exemplo, URL, login, senha, diretório de armazenamento das imagens e cookie.
 Observações:
 * Seu preenchimento é obrigatório
 * O usuário deve possuir acesso ao frontend do Zabbix
@@ -25,10 +25,7 @@ Link para o projeto: https://github.com/theMiddleBlue/BaTbot
 
 
 ##### [tg-grafico.sh](tg-grafico.sh)
-Esse script é executado pelo [batbot](https://github.com/rauhmaru/telegram-scripts/blob/master/batbot.sh), recebendo o *ITEMID* como parâmetro e retornando um gráfico para o solicitante.
-
-##### [dolar.sh](dolar.sh)
-Retorna o valor corrente do dólar comercial e sua variação do dia.
+Esse script é executado pelo [batbot](batbot.sh), recebendo o *ITEMID* como parâmetro e retornando um gráfico para o solicitante.
 
 ##### [tg-notifica.sh](tg-notifica.sh)
 Disparado através das ações das triggers, é quem notifica o usuário.
@@ -44,7 +41,10 @@ Para identificar qual o seu diretório de Alert Scripts, execute o comando:
 Para a geração de gráficos, **não** é necessário que os scripts [vars.conf](vars.conf), [tg-grafico.sh](tg-grafico.sh) e [batbot](batbot.sh) estejam no servidor do Zabbix. **Eles podem estar em qualquer host**, portanto que consigam acesso a interface web do Zabbix. As consultas são feitas através do método HTTP POST.
 
 ## CONFIGURAÇÃO
-### No Servidor Zabbix
+Esse procedimento é feito em duas etapas:
+### 01 -Configurar o zabbix para que gere as notificações, e envie os ITEM ID
+
+#### No Servidor Zabbix
 Verifique qual o seu diretório de AlertScriptsPath:
 
 `grep ^AlertScript /etc/zabbix/zabbix_server.conf`
@@ -63,30 +63,30 @@ mv telegram-scripts/{vars.conf,tg-notifica.sh} .
 chmod +x tg-notifica.sh
 ```
 
-### No Zabbix Web
-####Crie o tipo de mídia:
+#### No Zabbix Web
+##### Crie o tipo de mídia
 Logado no Zabbix Server como Super-Administrador, clique em **Administração** > **Tipos de mídias** e depois em **Criar tipo de mídia**.
-Então teremos:
-* **Nome:** telegram
-* **Tipo:** Script
-* **Nome do script:** tg-notifica.sh
-* **Ativo:** sim
+Defina:
+  * **Nome:** telegram
+  * **Tipo:** Script
+  * **Nome do script:** tg-notifica.sh
+  * **Ativo:** sim
 
-####Crie o usuário telegram
+##### Crie o usuário telegram
 Em **Administração > Usuários**, clique em **Criar usuário**
-Na guia Usuário, defina o apelido **telegram**. Fique a vontade com os outros parâmetros. Coloque-o em um grupo que tenha acesso as notificações que deseja emitir. O Zabbix administrators é uma sugestão.
+Na guia Usuário, defina o apelido **telegram**. Fique a vontade com os outros parâmetros. Coloque-o em um grupo que tenha acesso as notificações que deseja emitir. O _Zabbix administrators_ é uma sugestão.
 Na guia Mídia, clique em adicionar. Defina:
-* **Tipo:** telegram 
-* **Enviar para:** Esse campo não será usado. Preencha como quiser.
-* **Quando ativo:** Período de notificação. O padrão é 24/7.
-* **Ativo:** Sim
+  * **Tipo:** telegram 
+  * **Enviar para:** Esse campo não será usado. Preencha como quiser.
+  * **Quando ativo:** Período de notificação. O padrão é 24/7.
+  * **Ativo:** Sim
 
-####Defina as ações
-* Nome: Telegram
-* Na guia **Configuração > Ações**, clique em **Criar ação**
-* Na guia **Ação**, defina o nome **telegram**.
-* No campo **Assunto padrão**, defina \***[{TRIGGER.STATUS} - {HOST.NAME}]**\*.
-* No campo **Mensagem padrão**, defina, por exemplo:
+##### Defina as ações
+  * Nome: Telegram
+  * Na guia **Configuração > Ações**, clique em **Criar ação**
+  * Na guia **Ação**, defina o nome **telegram**.
+  * No campo **Assunto padrão**, defina \***[{TRIGGER.STATUS} - {HOST.NAME}]**\*.
+  * No campo **Mensagem padrão**, defina, por exemplo:
 ```
 {TRIGGER.NAME}
 {ITEM.NAME1}: {ITEM.VALUE1}
@@ -108,6 +108,26 @@ ITEM ID: {ITEM.ID}
 * Na guia **Ações**, em **Operações da ação**, clique em **Nova**.
 defina, em **Detalhes da operação > Enviar para usuários**, clique em **Adicionar** e selecione **telegram** e adicione a ação.
 
+### 02 - Rodar o batbot.sh
+Após configurar o seu vars.conf, execute o batbot juntamente com um `nohup`, para que ele permaneça em execução mesmo após o logout de seu usuário. Lembre-se de deixar os scripts invocados pelo batbot.sh em seu diretório, caso contrário, não esqueça de especificar dentro do batbot.sh onde estão esses arquivos.
+
+```
+nohup ./batbot.sh &
+```
+
+
+## Scripts adicionais
+
+##### [dolar.sh](dolar.sh)
+Retorna o valor corrente do dólar comercial e sua variação do dia.
+
+##### [checktcp.sh](checktcp.sh)
+Verifica as portas TCP abertas em um host.
+Modo de uso: `checktcp.sh HOST PORTAS`
+
+##### [checkudp.sh](checkudp.sh)
+Verifica as portas UDP abertas em um host.
+Modo de uso: `checkudp.sh HOST PORTAS`
 
 ## Etapas
 - [x] Envio de notificações
