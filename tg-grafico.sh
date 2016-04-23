@@ -36,5 +36,8 @@ get_image() {
 # Envio de graficos
 login
 get_image "${URL}" ${IMG_NAME}
-${CURL} ${TELEGRAM_URL}/sendPhoto -F "chat_id=${CHATID}" -F "photo=@${IMG_NAME}" &> /dev/null
+${CURL} ${TELEGRAM_URL}/sendPhoto -F "chat_id=${CHATID}" -F "photo=@${IMG_NAME}" -F "caption=$2
+$3" &> /dev/null
+
+# caso deseje apagar a imagem depois do envio, descomente
 # rm -f ${IMG_NAME}
