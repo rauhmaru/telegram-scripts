@@ -1,8 +1,10 @@
-#!/bin/bash
+#!/bn/bash
 #
-# Alertas do zabbix no telegram
+# Graficos do zabbix no telegram
 # Raul Liborio, rauhmaru@opensuse.org
 #
+VERSION=0.2
+
 # Carregar as principais variaveis 
 . $(dirname "$0")/vars.conf
 
@@ -20,8 +22,10 @@ URL="${ZBX_SERVER}/chart3.php?&width=900&height=200&period=3600&name=${ZBX_ITEMI
 # Comandos
 CURL="curl -s"
 CHATID=$( ${CURL} ${TELEGRAM_URL}${GETUPDATE} | awk -F'"chat":{"id":' END'{print $2}' | sed 's/,.*//' )
-MENSAGEM=$1
-
+TO=$1
+SUBJECT=$2
+BODY=$3
+# ** FUNCOES ** #
 # Login no Zabbix
 login() {
     # Crie um cookie de autenticacao
@@ -33,11 +37,40 @@ get_image() {
     ${CURL} --cookie ${TMP_COOKIE} --globoff "${URL}" -o ${IMG_NAME}
 }
 
-# Envio de graficos
+
+# Funcao de envio de graficos + texto
+send_graphs (){
+        login
+        get_image "${URL}" ${IMG_NAME}
+        ${CURL} ${TELEGRAM_URL}/sendPhoto -F "chat_id=${CHATID}" -F "photo=@${IMG_NAME}" -F "caption=${SUBJECT}
+${TG_TEXT}" &> /dev/null
+}
+
+# -- *** -- 
+# Verifique se os graficos serao enviados sempre ou quando solicitado:
+echo "{BODY}" | grep -q "::graficos::"
+
+# Caso verdade, chame a funcao de envio de graficos e saia
+# Caso falso, envie apenas o grafico se for solicitado
+if [ $? -eq "0" ] ; then
+        TG_TEXT=$( echo "${BODY}" | grep -v '::graficos::'; echo "--" )
+        ZBX_ITEMID="$( echo "${BODY}" | awk -F': ' /ITEM\ ID/'{ print $NF}')"
+        URL="${ZBX_SERVER}/chart3.php?&width=900&height=200&period=3600&name=${ZBX_ITEMID}&legend=1&items[0][itemid]=${ZBX_ITEMID}&items[0][drawtype]=5&items[0][color]=B173F0"
+        send_graphs
+        exit 0
+fi
+
+#Caso esteja definido o marcador ::texto::, envie a notificacao por texto
+echo "{BODY}" | grep -q "::texto::"
+if [ $? -eq "0" ] ; then
+        TG_TEXT=$( echo "${BODY}" | grep -v '::texto::'; echo "--" )
+        send_txt
+        exit 0
+fi
+
+# Envio de graficos por solicitacao
 login
 get_image "${URL}" ${IMG_NAME}
 ${CURL} ${TELEGRAM_URL}/sendPhoto -F "chat_id=${CHATID}" -F "photo=@${IMG_NAME}" -F "caption=$2
 $3" &> /dev/null
-
-# caso deseje apagar a imagem depois do envio, descomente
 # rm -f ${IMG_NAME}
