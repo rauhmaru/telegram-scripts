@@ -1,4 +1,4 @@
-#!/bn/bash
+#!/bin/bash
 #
 # Graficos do zabbix no telegram
 # Raul Liborio, rauhmaru@opensuse.org
