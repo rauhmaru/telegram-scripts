@@ -3,10 +3,10 @@
 
 from zabbix_api import ZabbixAPI
 import time
+from conf.vars import *
 
-zapi = ZabbixAPI(server="http://localhost/zabbix")
-zapi.login("Admin", "zabbix")
-
+zapi = ZabbixAPI(server=ZBX_SERVER)
+zapi.login(ZBX_USER, ZBX_PASS)
 
 triggers = zapi.trigger.get ({
             "output": ["description", "lastchange"], 
