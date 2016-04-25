@@ -20,6 +20,7 @@ HELPCOMANDOS="/uptime - Executa o comando uptime no servidor\n
 /dolar - Verifica o valor corrente do dolar e sua variacao\n
 /checktcp HOST PORTAS - Verifica portas TCP abertas
 /checkudp HOST PORTAS - Verifica portas UDP abertas
+/eventos - Consulta de eventos recentes do Zabbix
 /help - Exibe esta ajuda"
 
 # Commands
@@ -36,11 +37,13 @@ botcommands=(
 
 	["/nslookup (.*)"]="nslookup @R1"
 
-	["/dolar"]="dolar.sh"
+	["/dolar"]="bash dolar.sh"
 	
 	["/checktcp (.*)"]="bash checktcp.sh @R1"
 	
 	["/checkudp (.*)"]="bash checkudp.sh @R1"
+
+	["/eventos"]="python triggers.py"
 
 	["/help"]="echo -e $HELPCOMANDOS"
 
