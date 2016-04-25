@@ -149,7 +149,7 @@ Modo de uso: `checkudp.sh HOST PORTAS`
 - [x] Verificação de nomes com o `nslookup`
 - [x] Execução de `ping`
 - [x] Execução de portscan (`checktcp.sh` e `checkudp.sh`)
-- [ ] Consulta de eventos recentes
+- [x] Consulta de eventos recentes
 - [ ] Consulta de Informações de hosts
 - [ ] Ideias!
 - [ ] Colaboradores
