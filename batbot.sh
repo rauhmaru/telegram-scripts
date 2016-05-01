@@ -38,7 +38,9 @@ botcommands=(
 	["/nslookup (.*)"]="nslookup @R1"
 
 	["/dolar"]="bash dolar.sh"
-	
+
+	["/lero"]="bash lerolero.sh"
+
 	["/checktcp (.*)"]="bash checktcp.sh @R1"
 	
 	["/checkudp (.*)"]="bash checkudp.sh @R1"
