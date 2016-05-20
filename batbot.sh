@@ -17,10 +17,9 @@ HELPCOMANDOS="/uptime - Executa o comando uptime no servidor\n
 /grafico _ITEMID_ - Retorna o gráfico da última hora do ITEMID\n
 /ping _endereço_ - Executa o ping para o endereço\n
 /nslookup _endereço_ - Executa o nslookup para o endereço\n
-/dolar - Verifica o valor corrente do dolar e sua variacao\n
-/checktcp HOST PORTAS - Verifica portas TCP abertas
-/checkudp HOST PORTAS - Verifica portas UDP abertas
-/eventos - Consulta de eventos recentes do Zabbix
+/checktcp HOST PORTAS - Verifica portas TCP abertas\n
+/checkudp HOST PORTAS - Verifica portas UDP abertas\n
+/eventos - Consulta de eventos recentes do Zabbix\n
 /help - Exibe esta ajuda"
 
 # Commands
