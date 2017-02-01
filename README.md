@@ -18,7 +18,7 @@ cd telegram-scripts
 ```
 #### Configure o vars.conf
 
-##### [vars.conf](vars.conf)
+##### [vars.conf](conf/vars.py)
 Onde são armazenadas as variáveis utilizadas pelo [tg-grafico.sh](tg-grafico.sh) e [tg-notifica.sh](tg-notifica.sh), como por exemplo, URL, login, senha, diretório de armazenamento das imagens e cookie.
 Observações:
 * Seu preenchimento é obrigatório
