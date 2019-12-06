@@ -132,23 +132,18 @@ nohup ./batbot.sh &
 
 ## Scripts adicionais
 
-##### [dolar.sh](dolar.sh)
-Retorna o valor corrente do dólar comercial e sua variação do dia.
 
 ##### [checktcp.sh](checktcp.sh)
 Verifica as portas TCP abertas em um host.
 Modo de uso: `checktcp.sh HOST PORTAS`
 
-##### [checkudp.sh](checkudp.sh)
-Verifica as portas UDP abertas em um host.
-Modo de uso: `checkudp.sh HOST PORTAS`
 
 ### Etapas
 - [x] Envio de notificações
 - [x] Envio de gráficos
 - [x] Verificação de nomes com o `nslookup`
 - [x] Execução de `ping`
-- [x] Execução de portscan (`checktcp.sh` e `checkudp.sh`)
+- [x] Execução de portscan (`checktcp.sh`)
 - [x] Consulta de eventos recentes
 - [ ] Consulta de Informações de hosts
 - [ ] Ideias!
