@@ -42,8 +42,6 @@ botcommands=(
 
 	["/checktcp (.*)"]="bash checktcp.sh @R1"
 	
-	["/checkudp (.*)"]="bash checkudp.sh @R1"
-
 	["/eventos"]="python triggers.py"
 
 	["/help"]="echo -e $HELPCOMANDOS"
