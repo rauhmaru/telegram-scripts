@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Global variables 
-. $(dirname "$0")/conf/vars.py
+. $(dirname "$0")/conf/vars.conf
 # BaTbot current version
 VERSION="1.3"
 
