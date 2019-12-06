@@ -4,7 +4,7 @@
 # Raul Liborio, rauhmaru@opensuse.org
 #
 # Carregar as principais variaveis 
-. $(dirname "$0")/conf/vars.py
+. $(dirname "$0")/conf/vars.conf
 
 #Cria o TMP_DIR
 [ ! -d "${TMP_DIR}" ] && (mkdir -p ${TMP_DIR} || TMP_DIR="/tmp")
