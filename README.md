@@ -1,6 +1,6 @@
 # telegram-scripts
 
-_Coleção de scripts para o Telegram, para auxílio de tarefas._
+_Coleção de scripts para o envio de Alertas do Zabbix para o Telegram, e outros para auxílio de tarefas._
 Faça do seu telegram um verdadeiro terminal, onde você poderá executar comandos diretamente em seu host!
 * Obtenha gráficos do Zabbix
 * Execute `ping` para verificar a disponibilidade de sites e hosts
