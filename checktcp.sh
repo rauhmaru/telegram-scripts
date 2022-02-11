@@ -10,7 +10,7 @@ EXEMPLOS:\n
 
 [ $# -eq "1" ] && echo -e $Exemplo_err  && exit 1
 
-echo "Verificando portas TCP em $1..."
+echo "Verificando ${#} portas TCP em $1..."
 
 for PORT in $@; do
   (echo >/dev/tcp/${1}/${PORT}) >/dev/null 2>&1 && echo "${PORT} aberta"
